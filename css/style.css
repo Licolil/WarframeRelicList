@@ -1,0 +1,667 @@
+/* ----------------------------------------------------------------
+ * Warframe Relic List — readable game-reference layout
+ *
+ * Design intent:
+ *  - This is a game reference, not a data terminal. Readability first.
+ *  - Every drop is equally needed: rarity differentiates by hue,
+ *    not by emphasis. Common / Uncommon / Rare all read at the
+ *    same comfortable level.
+ *  - Rounded, slightly heavy type (M PLUS Rounded 1c) keeps Japanese
+ *    glyphs warm and legible; M PLUS 1 Code gives relic codes a clean
+ *    monospace rhythm without feeling sterile.
+ * ---------------------------------------------------------------- */
+
+:root {
+  /* surfaces */
+  --c-bg:          #f4f7fb;
+  --c-surface:     #ffffff;
+  --c-surface-2:   #eaf0f7;
+  --c-line:        #dbe2eb;
+  --c-line-strong: #b8c2ce;
+
+  /* text — deep, readable contrast on light surfaces */
+  --c-text:    #141a22;
+  --c-text-2:  #3a4452;   /* primary supporting (part names, tab inactive hover) */
+  --c-text-3:  #6b7484;   /* secondary supporting (badges, footer) */
+  --c-text-4:  #99a2af;   /* tertiary (placeholders, dim labels) */
+
+  /* accent */
+  --c-accent:      #0d7a8a;
+  --c-accent-soft: rgba(13, 122, 138, 0.10);
+
+  /* rarity — pushed to unambiguous category colors:
+     common = brown, uncommon = slate, rare = yellow. */
+  --c-common:        #7a4515;   /* chocolate brown */
+  --c-uncommon:      #475569;   /* cool slate */
+  --c-rare:          #9c8a00;   /* clear yellow */
+
+  /* tiers */
+  --c-tier-lith: #9d7710;
+  --c-tier-meso: #3a8a5e;
+  --c-tier-neo:  #356ea2;
+  --c-tier-axi:  #9c4b73;
+
+  /* utility */
+  --c-danger: #c83851;
+
+  /* type — game-reference: rounded, slightly heavy, JP-friendly */
+  --ff-sans: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN',
+             'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', system-ui,
+             -apple-system, sans-serif;
+  --ff-mono: 'M PLUS 1 Code', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* rhythm */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--ff-sans);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #e6ecf4 0%, transparent 60%),
+    var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+a:hover {
+  color: var(--c-text);
+  border-bottom-color: var(--c-accent);
+}
+
+button { font-family: inherit; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ---------- header ----------
+   Wraps cleanly on narrow viewports so badge / buttons never spill. */
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--c-line);
+  background: rgba(244, 247, 251, 0.85);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.brand {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.brand h1 {
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.brand h1::before {
+  content: '◇';
+  margin-right: 0.5em;
+  color: var(--c-accent);
+  font-weight: 400;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  min-width: 0;
+}
+
+.badge {
+  background: transparent;
+  border: none;
+  color: var(--c-text-3);
+  padding: 0;
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.btn-primary,
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--c-line-strong);
+  color: var(--c-text-2);
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.btn-primary {
+  color: var(--c-accent);
+  border-color: rgba(13, 122, 138, 0.45);
+}
+.btn-primary:hover {
+  background: var(--c-accent-soft);
+  border-color: var(--c-accent);
+  color: var(--c-text);
+}
+.btn-primary:disabled { cursor: progress; color: var(--c-text-3); border-color: var(--c-line); }
+
+.btn-ghost:hover {
+  color: var(--c-text);
+  border-color: var(--c-text-3);
+}
+
+/* ---------- status banner ---------- */
+.status-message {
+  margin: var(--s-3) var(--s-5) 0;
+  padding: var(--s-2) var(--s-3);
+  border-radius: 4px;
+  background: var(--c-surface);
+  border-left: 3px solid var(--c-line-strong);
+  color: var(--c-text-2);
+  font-size: 13px;
+  font-weight: 500;
+}
+.status-message.error {
+  border-left-color: var(--c-danger);
+  color: var(--c-danger);
+  background: rgba(200, 56, 81, 0.08);
+}
+
+/* ---------- main ---------- */
+.app-main {
+  padding: var(--s-5) var(--s-5) var(--s-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 110px);
+}
+
+/* ---------- tabs ---------- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--c-text-3);
+  padding: 10px 18px 12px;
+  cursor: pointer;
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab:hover { color: var(--c-text-2); }
+.tab.active {
+  color: var(--c-text);
+  border-bottom-color: var(--c-accent);
+}
+
+/* ---------- search bar ---------- */
+.search-bar {
+  display: flex;
+  gap: var(--s-2);
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.search-input-wrap {
+  position: relative;
+  flex: 1 1 320px;
+  min-width: 200px;
+}
+#search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  color: var(--c-text);
+  font-family: var(--ff-sans);
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color 0.15s, background 0.15s;
+}
+#search-input::placeholder { color: var(--c-text-4); font-weight: 400; }
+#search-input:focus {
+  outline: none;
+  border-color: var(--c-accent);
+  background: var(--c-surface-2);
+  box-shadow: 0 0 0 3px rgba(13, 122, 138, 0.16);
+}
+
+.category-filter {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  color: var(--c-text-2);
+  padding: 10px 14px;
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 160px;
+  cursor: pointer;
+}
+.category-filter:focus {
+  outline: none;
+  border-color: var(--c-accent);
+}
+
+/* ---------- suggestions ---------- */
+.suggestions {
+  position: absolute;
+  z-index: 20;
+  left: 0; right: 0;
+  top: calc(100% + 4px);
+  background: var(--c-surface);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 4px;
+  padding: 4px 0;
+  margin: 0;
+  list-style: none;
+  max-height: 360px;
+  overflow-y: auto;
+  box-shadow: 0 16px 40px rgba(15, 22, 32, 0.12);
+}
+.suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  cursor: pointer;
+  gap: var(--s-3);
+  transition: background 0.1s;
+}
+.suggestion:hover { background: var(--c-surface-2); }
+.suggestion-name {
+  color: var(--c-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.suggestion-cat {
+  color: var(--c-text-3);
+  font-family: var(--ff-sans);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+}
+.suggestion-empty {
+  padding: var(--s-3) var(--s-4);
+  color: var(--c-text-3);
+  font-size: 13px;
+  text-align: center;
+  list-style: none;
+}
+
+/* ---------- matrix ---------- */
+.matrix-root {
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--c-line);
+  border-radius: 0;
+  padding: 0;
+  overflow-x: auto;
+  margin-top: var(--s-2);
+}
+.matrix-empty {
+  padding: 80px var(--s-4);
+  text-align: center;
+  color: var(--c-text-3);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.matrix {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+.matrix .col-tier { width: 84px; }
+.matrix .col-item { min-width: 240px; }
+
+.matrix th, .matrix td {
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid var(--c-line);
+  padding: var(--s-3);
+}
+.matrix .item-header + .item-header,
+.matrix .cell + .cell {
+  border-left: 1px solid var(--c-line);
+}
+
+/* zebra striping per relic tier row.
+   Both rows get an explicit solid color so the body's radial gradient
+   doesn't bleed through tall cells and create a vertical color shift. */
+.matrix tbody tr:nth-child(odd) > td.cell,
+.matrix tbody tr:nth-child(odd) > th.tier-label {
+  background: var(--c-bg);
+}
+.matrix tbody tr:nth-child(even) > td.cell,
+.matrix tbody tr:nth-child(even) > th.tier-label {
+  background: var(--c-surface);
+}
+.matrix thead th {
+  position: sticky; top: 0;
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-line-strong);
+  z-index: 5;
+  padding: 0;
+}
+.matrix .corner {
+  background: var(--c-bg);
+  position: sticky; left: 0;
+  z-index: 6;
+  border-right: 1px solid var(--c-line);
+}
+
+/* item header cells */
+.matrix thead th.item-header {
+  padding: var(--s-4);
+}
+.item-header-top {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.item-title-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.item-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+  background: var(--c-surface);
+  object-fit: contain;
+  flex-shrink: 0;
+  border: 1px solid var(--c-line);
+  padding: 2px;
+}
+.item-title {
+  font-family: var(--ff-sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item-category { display: none; }
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid var(--c-line-strong);
+  color: var(--c-text-2);
+  width: 24px; height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+  font-size: 0;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.remove-btn::before,
+.remove-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+.remove-btn::before { transform: translate(-50%, -50%) rotate(45deg); }
+.remove-btn::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+.remove-btn:hover {
+  color: var(--c-danger);
+  border-color: var(--c-danger);
+}
+
+.parts-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+  margin-top: var(--s-3);
+  padding-top: 0;
+  border-top: none;
+}
+.part-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ff-sans);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-text-2);
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.part-toggle:hover {
+  border-color: var(--c-text-4);
+}
+.part-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0; height: 0;
+}
+.part-toggle:has(input:checked) {
+  color: var(--c-text);
+  border-color: var(--c-text-4);
+  background: var(--c-surface-2);
+}
+.part-toggle:has(input:not(:checked)) {
+  color: var(--c-text-4);
+  border-color: var(--c-line);
+}
+.part-toggle:has(input:not(:checked)) span {
+  text-decoration: line-through;
+  text-decoration-color: var(--c-text-4);
+}
+
+/* tier row labels — icon + label, vertically centered in the row.
+   Uses native table-cell vertical-align:middle so the label sits
+   centered against tall columns (e.g. items with many drops). */
+.tier-label {
+  position: sticky; left: 0;
+  background: var(--c-bg);
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: inset -1px 0 0 var(--c-line);
+  z-index: 4;
+  padding: var(--s-3) var(--s-2);
+  vertical-align: middle;
+}
+.tier-icon {
+  display: block;
+  margin: 0 auto var(--s-2);
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+.tier-label > span {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding-left: 0.08em;
+}
+.tier-lith  { color: var(--c-tier-lith); }
+.tier-meso  { color: var(--c-tier-meso); }
+.tier-neo   { color: var(--c-tier-neo); }
+.tier-axi   { color: var(--c-tier-axi); }
+
+/* drop cells */
+.cell {
+  background: transparent;
+  padding: var(--s-3) var(--s-2);
+}
+.cell.empty {
+  color: var(--c-text-3);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* relic line — bold weight + distinct hue so rarities are unambiguous
+   even at a glance, while every drop stays equally readable. */
+.relic-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  padding: 2px 0;
+  margin: 0;
+  border-left: none;
+  border-radius: 0;
+  background: transparent;
+}
+.relic-line + .relic-line { margin-top: 1px; }
+
+.relic-code {
+  font-family: var(--ff-mono);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  min-width: 38px;
+  color: var(--c-text);
+}
+.relic-part-icon { display: none; }
+.relic-part {
+  font-family: var(--ff-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--c-text-2);
+  letter-spacing: 0;
+}
+
+/* rarity: hue only — every drop is needed, all stay readable. */
+.rarity-common .relic-code,
+.rarity-common .relic-part { color: var(--c-common); }
+
+.rarity-uncommon .relic-code,
+.rarity-uncommon .relic-part { color: var(--c-uncommon); }
+
+.rarity-rare .relic-code,
+.rarity-rare .relic-part { color: var(--c-rare); }
+
+
+/* ---------- footer ---------- */
+.app-footer {
+  margin-top: auto;
+  padding: var(--s-4) var(--s-5);
+  border-top: 1px solid var(--c-line);
+  color: var(--c-text-3);
+  font-family: var(--ff-sans);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+.app-footer a {
+  color: var(--c-text-2);
+}
+.app-footer a:hover {
+  color: var(--c-text);
+}
+.app-footer .footer-line {
+  margin: 0;
+  line-height: 1.6;
+}
+.app-footer .footer-line + .footer-line {
+  margin-top: 4px;
+}
+.app-footer .footer-disclaimer {
+  color: var(--c-text-4);
+  font-size: 11px;
+}
+
+/* ---------- responsive ----------
+   Header wraps to multi-row at narrow widths so nothing is hidden. */
+@media (max-width: 900px) {
+  .app-header {
+    padding: var(--s-3) var(--s-4);
+  }
+  .app-main {
+    padding: var(--s-4) var(--s-3) var(--s-7);
+  }
+  .matrix .col-item { min-width: 200px; }
+  .matrix th, .matrix td { padding: var(--s-2); }
+  .tier-label { padding: var(--s-3) var(--s-2); }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-2);
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .badge {
+    font-size: 11px;
+  }
+  .brand h1 { font-size: 15px; }
+  .matrix .col-tier { width: 64px; }
+  .tier-icon { width: 30px; height: 30px; }
+  .tier-label { font-size: 11px; }
+  .relic-code { font-size: 12.5px; min-width: 34px; }
+  .relic-part { font-size: 12px; }
+}
