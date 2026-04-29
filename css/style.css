@@ -36,10 +36,10 @@
   --c-rare:          #9c8a00;   /* clear yellow */
 
   /* tiers */
-  --c-tier-lith: #9d7710;
-  --c-tier-meso: #3a8a5e;
+  --c-tier-lith: var(--c-common);
+  --c-tier-meso: var(--c-uncommon);
   --c-tier-neo:  #356ea2;
-  --c-tier-axi:  #9c4b73;
+  --c-tier-axi:  var(--c-rare);
 
   /* utility */
   --c-danger: #c83851;
