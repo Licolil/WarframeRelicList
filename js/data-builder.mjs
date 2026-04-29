@@ -10,8 +10,10 @@
 // pick up new relic information without waiting for this repository to update.
 // Browser-side validation limits the risk of malformed or unexpected data.
 
+import { WARFRAME_ITEMS_CDN_BASE } from './upstream.mjs';
+
 export const RAW_BASE =
-  'https://cdn.jsdelivr.net/gh/WFCD/warframe-items@master/data/json';
+  `${WARFRAME_ITEMS_CDN_BASE}/data/json`;
 
 export const UPSTREAM_REPO = 'https://github.com/WFCD/warframe-items';
 export const UPSTREAM_LICENSE = 'MIT';

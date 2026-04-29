@@ -1,0 +1,11 @@
+/
+  Cache-Control: no-cache, no-transform
+
+/index.html
+  Cache-Control: no-cache, no-transform
+
+/js/*
+  Cache-Control: public, max-age=300, must-revalidate, no-transform
+
+/data/*
+  Cache-Control: public, max-age=300, must-revalidate, no-transform

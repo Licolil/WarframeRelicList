@@ -4,6 +4,11 @@
 
 import { loadInitial, refreshFromUpstream } from './data.mjs';
 import { TIERS, safeImageName } from './data-builder.mjs';
+import {
+  cdnImageUrl,
+  cdnItemImageUrl,
+  relicTierImageUrl,
+} from './images.mjs?v=20260429-jsdelivr-images';
 import { detectLang, t, STRINGS, translatePartName } from './i18n.mjs';
 
 const STATE = {
@@ -22,7 +27,6 @@ const RARITY_CLASS = {
   Uncommon: 'rarity-uncommon',
   Rare: 'rarity-rare',
 };
-
 bootstrap();
 
 async function bootstrap() {
@@ -295,8 +299,14 @@ function renderMatrix() {
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
-      // Hide silently if the CDN doesn't have this asset.
-      img.addEventListener('error', () => img.remove());
+      const fallbackImageUrl = cdnItemImageUrl(item.name);
+      img.addEventListener('error', () => {
+        if (img.src !== fallbackImageUrl) {
+          img.src = fallbackImageUrl;
+          return;
+        }
+        img.remove();
+      });
       top.appendChild(img);
     }
 
@@ -348,11 +358,10 @@ function renderMatrix() {
     tierTh.className = `tier-label tier-${tier.toLowerCase()}`;
     const tierIcon = document.createElement('img');
     tierIcon.className = 'tier-icon';
-    tierIcon.src = `https://cdn.warframestat.us/img/${tier.toLowerCase()}-intact.png`;
+    tierIcon.src = relicTierImageUrl(tier);
     tierIcon.alt = '';
     tierIcon.loading = 'lazy';
     tierIcon.decoding = 'async';
-    tierIcon.addEventListener('error', () => tierIcon.remove());
     const tierText = document.createElement('span');
     tierText.textContent = tier;
     tierTh.append(tierIcon, tierText);
@@ -427,10 +436,6 @@ function formatDate(iso, lang) {
   } catch {
     return d.toISOString().slice(0, 10);
   }
-}
-
-function cdnImageUrl(imageName) {
-  return `https://cdn.warframestat.us/img/${encodeURIComponent(imageName)}`;
 }
 
 function showStatus(msg, isError) {
