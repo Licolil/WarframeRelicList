@@ -13,3 +13,7 @@ export function cdnItemImageUrl(itemName) {
 export function relicTierImageUrl(tier) {
   return cdnImageUrl(`Relic${tier}A.png`);
 }
+
+export function ayaIconUrl() {
+  return cdnImageUrl('Aya.png');
+}

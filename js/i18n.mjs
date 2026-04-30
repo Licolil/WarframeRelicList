@@ -6,6 +6,7 @@ export const STRINGS = {
     appSubtitle: '欲しい装備からレリックを逆引き',
     tabUnvaulted: '入手可能 (Unvaulted)',
     tabVaulted: '入手不可 (Vaulted)',
+    tabResurgence: 'リサージェンス (期間限定)',
     tabBoth: 'すべて',
     searchPlaceholder: '装備名を検索 (例: Volt Prime)',
     categoryAll: 'すべて',
@@ -39,12 +40,14 @@ export const STRINGS = {
     noDrops: '—',
     suggestionsEmpty: '一致する装備はありません',
     langLabel: '言語',
+    resurgenceAvailable: 'Prime リサージェンスで入手可能 (Aya / Regal Aya)',
   },
   en: {
     appTitle: 'Warframe Relic List',
     appSubtitle: 'Reverse-lookup relics from gear you want',
     tabUnvaulted: 'Available (Unvaulted)',
     tabVaulted: 'Unavailable (Vaulted)',
+    tabResurgence: 'Resurgence (limited)',
     tabBoth: 'All',
     searchPlaceholder: 'Search equipment (e.g. Volt Prime)',
     categoryAll: 'All',
@@ -78,6 +81,7 @@ export const STRINGS = {
     noDrops: '—',
     suggestionsEmpty: 'No matching equipment',
     langLabel: 'Language',
+    resurgenceAvailable: 'Available via Prime Resurgence (Aya / Regal Aya)',
   },
 };
 

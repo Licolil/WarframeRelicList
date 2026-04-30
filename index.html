@@ -6,7 +6,7 @@
     <meta name="description" content="Warframe Void Relic reverse-lookup table" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://cdn.jsdelivr.net data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://cdn.jsdelivr.net data:; connect-src 'self' https://cdn.jsdelivr.net https://api.warframestat.us; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
     />
     <title>Warframe Relic List</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,6 +37,7 @@
         <button class="tab active" data-tab="all" type="button">All</button>
         <button class="tab" data-tab="unvaulted" type="button">Available (Unvaulted)</button>
         <button class="tab" data-tab="vaulted" type="button">Unavailable (Vaulted)</button>
+        <button class="tab" data-tab="resurgence" type="button">Resurgence (limited)</button>
       </nav>
 
       <section class="search-bar">

@@ -8,18 +8,25 @@ import {
   cdnImageUrl,
   cdnItemImageUrl,
   relicTierImageUrl,
+  ayaIconUrl,
 } from './images.mjs?v=20260429-jsdelivr-images';
 import { detectLang, t, STRINGS, translatePartName } from './i18n.mjs';
+import {
+  loadResurgentRelics,
+  refreshResurgentRelics,
+} from './resurgence.mjs';
 
 const STATE = {
   data: null, // { lastUpdated, items: [...] }
   source: 'bundle',
   lang: detectLang(),
-  tab: 'all', // 'all' | 'unvaulted' | 'vaulted'
+  tab: 'all', // 'all' | 'unvaulted' | 'vaulted' | 'resurgence'
   category: 'all',
   query: '',
   // Map<itemName, { excludedParts: Set<partName> }>
   selected: new Map(),
+  // Set<string> of currently-resurgent relic codes (e.g. "Lith V1").
+  resurgentRelics: new Set(),
 };
 
 const RARITY_CLASS = {
@@ -36,13 +43,24 @@ async function bootstrap() {
   bindCategoryFilter();
   applyStaticTranslations();
 
-  try {
-    const { data, source } = await loadInitial();
-    STATE.data = data;
-    STATE.source = source;
-  } catch (err) {
-    console.error(err);
-    showStatus(t(STATE.lang, 'updateFail') + ': ' + err.message, true);
+  const [relicResult, resurgenceResult] = await Promise.allSettled([
+    loadInitial(),
+    loadResurgentRelics(),
+  ]);
+  if (relicResult.status === 'fulfilled') {
+    STATE.data = relicResult.value.data;
+    STATE.source = relicResult.value.source;
+  } else {
+    console.error(relicResult.reason);
+    showStatus(
+      t(STATE.lang, 'updateFail') + ': ' + (relicResult.reason?.message ?? ''),
+      true
+    );
+  }
+  if (resurgenceResult.status === 'fulfilled') {
+    STATE.resurgentRelics = resurgenceResult.value.relics;
+  } else {
+    console.warn('Resurgence load failed:', resurgenceResult.reason);
   }
   renderAll();
 }
@@ -62,18 +80,31 @@ function bindHeaderControls() {
     const btn = document.getElementById('refresh-btn');
     btn.disabled = true;
     showStatus(t(STATE.lang, 'updating'), false);
-    try {
-      const { data, source } = await refreshFromUpstream();
-      STATE.data = data;
-      STATE.source = source;
-      showStatus(t(STATE.lang, 'updateOk'), false);
-      renderAll();
-    } catch (err) {
-      console.error(err);
-      showStatus(t(STATE.lang, 'updateFail') + ': ' + err.message, true);
-    } finally {
-      btn.disabled = false;
+    const [relicResult, resurgenceResult] = await Promise.allSettled([
+      refreshFromUpstream(),
+      refreshResurgentRelics(),
+    ]);
+    if (relicResult.status === 'fulfilled') {
+      STATE.data = relicResult.value.data;
+      STATE.source = relicResult.value.source;
+    } else {
+      console.error(relicResult.reason);
     }
+    if (resurgenceResult.status === 'fulfilled') {
+      STATE.resurgentRelics = resurgenceResult.value.relics;
+    } else {
+      console.warn('Resurgence refresh failed:', resurgenceResult.reason);
+    }
+    if (relicResult.status === 'fulfilled') {
+      showStatus(t(STATE.lang, 'updateOk'), false);
+    } else {
+      showStatus(
+        t(STATE.lang, 'updateFail') + ': ' + (relicResult.reason?.message ?? ''),
+        true
+      );
+    }
+    renderAll();
+    btn.disabled = false;
   });
 }
 
@@ -83,6 +114,10 @@ function bindTabs() {
       STATE.tab = el.dataset.tab;
       renderTabs();
       renderMatrix();
+      // Suggestions are scoped per-tab (Resurgence narrows to resurgent gear),
+      // so re-render even when the search box isn't focused — the next focus
+      // should already reflect the new tab.
+      renderSuggestions();
     });
   });
 }
@@ -130,6 +165,7 @@ function applyStaticTranslations() {
   document.getElementById('selected-header').textContent = t(L, 'selectedHeader');
   document.querySelector('[data-tab="unvaulted"]').textContent = t(L, 'tabUnvaulted');
   document.querySelector('[data-tab="vaulted"]').textContent = t(L, 'tabVaulted');
+  document.querySelector('[data-tab="resurgence"]').textContent = t(L, 'tabResurgence');
   document.querySelector('[data-tab="all"]').textContent = t(L, 'tabBoth');
 
   const sel = document.getElementById('category-filter');
@@ -191,6 +227,7 @@ function renderSuggestions() {
     .filter((it) => {
       if (cat !== 'all' && it.category !== cat) return false;
       if (q && !it.name.toLowerCase().includes(q)) return false;
+      if (STATE.tab === 'resurgence' && !hasResurgentDrop(it)) return false;
       return !STATE.selected.has(it.name);
     })
     .slice(0, 30);
@@ -377,7 +414,15 @@ function renderMatrix() {
         for (const drop of part.drops[tier] ?? []) {
           if (STATE.tab === 'unvaulted' && drop.vaulted) continue;
           if (STATE.tab === 'vaulted' && !drop.vaulted) continue;
-          lines.push({ part: part.name, partImageName: part.imageName, ...drop });
+          const fullRelicKey = `${tier} ${drop.relic}`;
+          const isResurgent = STATE.resurgentRelics.has(fullRelicKey);
+          if (STATE.tab === 'resurgence' && !isResurgent) continue;
+          lines.push({
+            part: part.name,
+            partImageName: part.imageName,
+            isResurgent,
+            ...drop,
+          });
         }
       }
       lines.sort((a, b) => {
@@ -398,6 +443,16 @@ function renderMatrix() {
           code.className = 'relic-code';
           code.textContent = line.relic;
           row.appendChild(code);
+          if (line.isResurgent) {
+            const ayaIcon = document.createElement('img');
+            ayaIcon.className = 'aya-icon';
+            ayaIcon.src = ayaIconUrl();
+            ayaIcon.alt = '';
+            ayaIcon.title = t(L, 'resurgenceAvailable');
+            ayaIcon.loading = 'lazy';
+            ayaIcon.decoding = 'async';
+            row.appendChild(ayaIcon);
+          }
           const partName = document.createElement('span');
           partName.className = 'relic-part';
           partName.textContent = translatePartName(line.part, L);
@@ -414,6 +469,18 @@ function renderMatrix() {
 }
 
 // ---------- helpers ----------
+
+function hasResurgentDrop(item) {
+  if (STATE.resurgentRelics.size === 0) return false;
+  for (const part of item.parts) {
+    for (const tier of TIERS) {
+      for (const drop of part.drops[tier] ?? []) {
+        if (STATE.resurgentRelics.has(`${tier} ${drop.relic}`)) return true;
+      }
+    }
+  }
+  return false;
+}
 
 function rarityRank(r) {
   return r === 'Rare' ? 0 : r === 'Uncommon' ? 1 : 2;
