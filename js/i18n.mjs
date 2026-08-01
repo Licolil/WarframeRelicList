@@ -118,7 +118,7 @@ const PART_TERMS_JA = {
   Handle: 'ハンドル',
   Blade: 'ブレード',
   Blueprint: '本体設計図',
-  Band: 'バンド',
+  Band: 'ベルト',
   Barrel: 'バレル',
   Blades: 'ブレード',
   Boot: 'ブート',
