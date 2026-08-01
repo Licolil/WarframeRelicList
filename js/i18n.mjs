@@ -41,6 +41,9 @@ export const STRINGS = {
     suggestionsEmpty: '一致する装備はありません',
     langLabel: '言語',
     resurgenceAvailable: 'Prime リサージェンスで入手可能 (Aya / Regal Aya)',
+    copyPartName: 'ゲーム内検索名をコピー',
+    copied: 'コピーしました',
+    copyFailed: 'コピーに失敗しました',
   },
   en: {
     appTitle: 'Warframe Relic List',
@@ -82,6 +85,9 @@ export const STRINGS = {
     suggestionsEmpty: 'No matching equipment',
     langLabel: 'Language',
     resurgenceAvailable: 'Available via Prime Resurgence (Aya / Regal Aya)',
+    copyPartName: 'Copy in-game name',
+    copied: 'Copied',
+    copyFailed: 'Copy failed',
   },
 };
 
@@ -152,4 +158,21 @@ export function translatePartName(name, lang) {
     if (headJa) return `${headJa}の設計図`;
   }
   return name;
+}
+
+// Build the exact in-game item name used by Warframe's search box, which
+// only matches from the beginning of the name. JA rules observed in game:
+// standalone "Blueprint" attaches with no space ("Xの設計図"), every other
+// component takes a space ("X シャーシの設計図" / "X ストリング").
+// Terms missing from the dictionary fall back to the English name, which is
+// still valid for an English client, rather than emitting a broken JA name.
+export function buildInGameName(itemName, partName, lang) {
+  if (!itemName || !partName) return itemName || partName || '';
+  if (lang !== 'ja') return `${itemName} ${partName}`;
+  if (partName === 'Blueprint') return `${itemName}の設計図`;
+  if (partName.endsWith(' Blueprint')) {
+    const headJa = PART_TERMS_JA[partName.slice(0, -' Blueprint'.length)];
+    return headJa ? `${itemName} ${headJa}の設計図` : `${itemName} ${partName}`;
+  }
+  return `${itemName} ${PART_TERMS_JA[partName] ?? partName}`;
 }

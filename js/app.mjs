@@ -10,7 +10,13 @@ import {
   relicTierImageUrl,
   ayaIconUrl,
 } from './images.mjs?v=20260429-jsdelivr-images';
-import { detectLang, t, STRINGS, translatePartName } from './i18n.mjs';
+import {
+  detectLang,
+  t,
+  STRINGS,
+  translatePartName,
+  buildInGameName,
+} from './i18n.mjs';
 import {
   loadResurgentRelics,
   refreshResurgentRelics,
@@ -367,9 +373,13 @@ function renderMatrix() {
     const sel = STATE.selected.get(item.name);
     for (const part of item.parts) {
       const id = `pt-${slug(item.name)}-${slug(part.name)}`;
-      const wrap = document.createElement('label');
+      const wrap = document.createElement('div');
       wrap.className = 'part-toggle';
-      wrap.htmlFor = id;
+      // The pill holds two independent controls, so the label — not the pill —
+      // owns the checkbox; a <button> inside a <label> would steal its clicks.
+      const label = document.createElement('label');
+      label.className = 'part-toggle-label';
+      label.htmlFor = id;
       const cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.id = id;
@@ -377,7 +387,17 @@ function renderMatrix() {
       cb.addEventListener('change', () => togglePart(item.name, part.name));
       const span = document.createElement('span');
       span.textContent = translatePartName(part.name, L);
-      wrap.append(cb, span);
+      label.append(cb, span);
+
+      const inGameName = buildInGameName(item.name, part.name, L);
+      const copyBtn = document.createElement('button');
+      copyBtn.type = 'button';
+      copyBtn.className = 'part-copy-btn';
+      copyBtn.title = `${t(L, 'copyPartName')}: ${inGameName}`;
+      copyBtn.setAttribute('aria-label', copyBtn.title);
+      copyBtn.addEventListener('click', () => copyPartName(copyBtn, inGameName));
+
+      wrap.append(label, copyBtn);
       partsBox.appendChild(wrap);
     }
 
@@ -490,6 +510,51 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 }
 
+// Copy via the async Clipboard API, falling back to the legacy execCommand
+// path when it is unavailable (non-secure context such as file://) or denied.
+async function copyToClipboard(text) {
+  if (window.isSecureContext && navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // fall through to the legacy path
+    }
+  }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+const COPIED_FEEDBACK_MS = 1200;
+
+async function copyPartName(btn, inGameName) {
+  const L = STATE.lang;
+  const ok = await copyToClipboard(inGameName);
+  if (!ok) {
+    showToast(t(L, 'copyFailed'), true);
+    return;
+  }
+  showToast(`${t(L, 'copied')}: ${inGameName}`);
+  btn.classList.add('is-copied');
+  clearTimeout(btn._copiedTimer);
+  btn._copiedTimer = setTimeout(() => {
+    btn.classList.remove('is-copied');
+  }, COPIED_FEEDBACK_MS);
+}
+
 function formatDate(iso, lang) {
   if (!iso) return '—';
   const d = new Date(iso);
@@ -503,6 +568,32 @@ function formatDate(iso, lang) {
   } catch {
     return d.toISOString().slice(0, 10);
   }
+}
+
+const TOAST_MS = 2200;
+const TOAST_MAX = 3;
+
+// Transient corner notification, used for actions that need feedback without
+// pushing the page around (copying a part name). Longer-lived states such as
+// data refresh keep using the inline status banner.
+function showToast(msg, isError) {
+  const root = document.getElementById('toast-root');
+  if (!root) return;
+
+  const toast = document.createElement('div');
+  toast.className = isError ? 'toast error' : 'toast';
+  toast.textContent = msg;
+  root.appendChild(toast);
+
+  // Cap the stack so rapid clicking cannot bury the page.
+  while (root.children.length > TOAST_MAX) root.firstElementChild.remove();
+
+  const dismiss = () => {
+    toast.classList.add('is-leaving');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+    setTimeout(() => toast.remove(), 400);
+  };
+  setTimeout(dismiss, TOAST_MS);
 }
 
 function showStatus(msg, isError) {
