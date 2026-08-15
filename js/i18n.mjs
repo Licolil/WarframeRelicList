@@ -146,6 +146,110 @@ const PART_TERMS_JA = {
   Wings: 'ウイング',
 };
 
+// --- ゲーム内検索名の切り詰め（前方一致検索対応） --------------------------
+// ゲーム側の JA ローカライズに誤字があり、正式名の完全一致ではゲーム内検索に
+// ヒットしないパーツが存在する。Warframe の検索は前方一致のため、誤字が混入
+// しない範囲まで切り詰めた接頭辞をコピーする。
+//
+// 【元に戻す方法】ゲーム側の誤字が修正されたら、下の定数を false にするだけで
+// よい。buildInGameName() が PART_TERMS_JA / 'の設計図' を使う従来の完全名生成
+// に戻る（その場合、下の SHORT 辞書は未使用になるが、再度切り替えられるよう
+// 意図的に残す）。
+const USE_SHORT_SEARCH_NAMES = true;
+
+// 切り詰め後の JA 部位名（カタカナ一律 2 文字）。data/relics.json の全パーツ
+// 構成で、同一装備内の他パーツ正式名に前方一致しないことを検証済み
+// （scripts/check-short-names.mjs で再検証できる）。
+// Stock / String はどちらも 'スト' になるが、同一装備に同居しないため可。
+const PART_TERMS_JA_SHORT = {
+  Systems: 'シス',
+  Neuroptics: 'ニュ',
+  Chassis: 'シャ',
+  Handle: 'ハン',
+  Blade: 'ブレ',
+  Band: 'ベル',
+  Barrel: 'バレ',
+  Blades: 'ブレ',
+  Boot: 'ブー',
+  Buckle: 'バッ',
+  Carapace: 'キャ',
+  Cerebrum: 'セリ',
+  Chain: 'チェ',
+  Disc: 'ディ',
+  Gauntlet: 'ガン',
+  Grip: 'グリ',
+  Guard: 'ガー',
+  Harness: 'ハー',
+  Head: 'ヘッ',
+  Hilt: 'ヒル',
+  'Kubrow Collar': 'クブ',
+  Link: 'リン',
+  'Lower Limb': 'ボト',
+  Ornament: 'オー',
+  Pouch: 'ポー',
+  Receiver: 'レシ',
+  Stars: 'スタ',
+  Stock: 'スト',
+  String: 'スト', // Stock と同一だが同居しないため可
+  'Upper Limb': 'トッ',
+  Wings: 'ウイ',
+};
+
+// 単独 Blueprint（本体設計図）用の接尾辞。JA では 'Xの設計図' -> 'Xの設'。
+const BLUEPRINT_SUFFIX_JA = 'の設計図';
+const BLUEPRINT_SUFFIX_JA_SHORT = 'の設';
+
+// 切り詰め後の EN パーツ名（一律 3 文字）。EN は辞書変換せず生データのパーツ名
+// をそのまま使うため、キーは data/relics.json に現れる完全なパーツ名
+// (' Blueprint' 付きを含む)。Chain / 'Chassis Blueprint' (Cha)、
+// Blade / Blades (Bla)、Systems / 'Systems Blueprint' (Sys) は同値になるが、
+// いずれも同一装備に同居しないため可。
+const PART_TERMS_EN_SHORT = {
+  Band: 'Ban',
+  Barrel: 'Bar',
+  Blade: 'Bla',
+  Blades: 'Bla',
+  Blueprint: 'Blu',
+  Boot: 'Boo',
+  Buckle: 'Buc',
+  Carapace: 'Car',
+  Cerebrum: 'Cer',
+  Chain: 'Cha',
+  'Chassis Blueprint': 'Cha',
+  Disc: 'Dis',
+  Gauntlet: 'Gau',
+  Grip: 'Gri',
+  Guard: 'Gua',
+  Handle: 'Han',
+  'Harness Blueprint': 'Har',
+  Head: 'Hea',
+  Hilt: 'Hil',
+  'Kubrow Collar Blueprint': 'Kub',
+  Link: 'Lin',
+  'Lower Limb': 'Low',
+  'Neuroptics Blueprint': 'Neu',
+  Ornament: 'Orn',
+  Pouch: 'Pou',
+  Receiver: 'Rec',
+  Stars: 'Sta',
+  Stock: 'Sto',
+  String: 'Str',
+  Systems: 'Sys',
+  'Systems Blueprint': 'Sys',
+  'Upper Limb': 'Upp',
+  'Wings Blueprint': 'Win',
+};
+
+// 検証スクリプト用に辞書を公開する（アプリ本体からは参照しない）。
+export const SEARCH_NAME_DICTS = {
+  USE_SHORT_SEARCH_NAMES,
+  PART_TERMS_JA,
+  PART_TERMS_JA_SHORT,
+  PART_TERMS_EN_SHORT,
+  BLUEPRINT_SUFFIX_JA,
+  BLUEPRINT_SUFFIX_JA_SHORT,
+};
+
 // Translate part names like "Systems Blueprint" -> "システムの設計図".
 // Falls back to the original English name when the head term is not in
 // the dictionary, so untranslated terms remain identifiable.
@@ -160,19 +264,41 @@ export function translatePartName(name, lang) {
   return name;
 }
 
-// Build the exact in-game item name used by Warframe's search box, which
-// only matches from the beginning of the name. JA rules observed in game:
+// Build the in-game item name used by Warframe's search box, which only
+// matches from the beginning of the name. JA rules observed in game:
 // standalone "Blueprint" attaches with no space ("Xの設計図"), every other
 // component takes a space ("X シャーシの設計図" / "X ストリング").
-// Terms missing from the dictionary fall back to the English name, which is
-// still valid for an English client, rather than emitting a broken JA name.
+//
+// USE_SHORT_SEARCH_NAMES が true のときは、ゲーム側の誤字を避けるため
+// 「同一装備内の他パーツと被らない範囲」まで切り詰めた接頭辞を返す
+// ("X シャーシの設計図" -> "X シャ", "Xの設計図" -> "Xの設")。
+//
+// Terms missing from the dictionary fall back to the full English name rather
+// than emitting a broken or over-truncated name. 上流データに新しいパーツ名が
+// 増えたとき、勝手に切り詰めて誤ヒットさせないための安全側フォールバック。
 export function buildInGameName(itemName, partName, lang) {
   if (!itemName || !partName) return itemName || partName || '';
-  if (lang !== 'ja') return `${itemName} ${partName}`;
-  if (partName === 'Blueprint') return `${itemName}の設計図`;
-  if (partName.endsWith(' Blueprint')) {
-    const headJa = PART_TERMS_JA[partName.slice(0, -' Blueprint'.length)];
-    return headJa ? `${itemName} ${headJa}の設計図` : `${itemName} ${partName}`;
+
+  if (lang !== 'ja') {
+    const shortEn = USE_SHORT_SEARCH_NAMES ? PART_TERMS_EN_SHORT[partName] : null;
+    return `${itemName} ${shortEn ?? partName}`;
   }
-  return `${itemName} ${PART_TERMS_JA[partName] ?? partName}`;
+
+  const terms = USE_SHORT_SEARCH_NAMES ? PART_TERMS_JA_SHORT : PART_TERMS_JA;
+  const bpSuffix = USE_SHORT_SEARCH_NAMES
+    ? BLUEPRINT_SUFFIX_JA_SHORT
+    : BLUEPRINT_SUFFIX_JA;
+
+  if (partName === 'Blueprint') return `${itemName}${bpSuffix}`;
+
+  if (partName.endsWith(' Blueprint')) {
+    const headJa = terms[partName.slice(0, -' Blueprint'.length)];
+    if (!headJa) return `${itemName} ${partName}`;
+    // 切り詰め時は 'の設計図' ごと落とす ("X シャーシの設計図" -> "X シャ")。
+    return USE_SHORT_SEARCH_NAMES
+      ? `${itemName} ${headJa}`
+      : `${itemName} ${headJa}${BLUEPRINT_SUFFIX_JA}`;
+  }
+
+  return `${itemName} ${terms[partName] ?? partName}`;
 }
