@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-01T12:35:51.849Z",
+  "lastUpdated": "2026-10-30T11:49:53.828Z",
   "source": "https://cdn.jsdelivr.net/gh/WFCD/warframe-items@master/data/json",
   "upstream": {
     "repo": "https://github.com/WFCD/warframe-items",
@@ -382,6 +382,77 @@
                 "vaulted": true
               }
             ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Corufell Prime",
+      "category": "ArchMelee",
+      "imageName": "CorufellPrime.png",
+      "parts": [
+        {
+          "name": "Blueprint",
+          "imageName": "blueprint.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [
+              {
+                "relic": "V17",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Neo": [],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Handle",
+          "imageName": "GenericWeaponPrimeHilt.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [],
+            "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "Receiver",
+          "imageName": "GenericGunPrimeReceiver.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [
+              {
+                "relic": "C10",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Stock",
+          "imageName": "GenericWeaponPrimeBlade.png",
+          "drops": {
+            "Lith": [
+              {
+                "relic": "C15",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Meso": [],
+            "Neo": [],
+            "Axi": []
           }
         }
       ]
@@ -1455,6 +1526,11 @@
           "drops": {
             "Lith": [
               {
+                "relic": "A13",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
+              {
                 "relic": "C13",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -1479,7 +1555,7 @@
               {
                 "relic": "X1",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -1491,7 +1567,13 @@
           "imageName": "GenericWeaponPrimeBlade.png",
           "drops": {
             "Lith": [],
-            "Meso": [],
+            "Meso": [
+              {
+                "relic": "D9",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
             "Neo": [
               {
                 "relic": "D9",
@@ -1551,6 +1633,11 @@
               },
               {
                 "relic": "S20",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "S21",
                 "rarity": "Common",
                 "vaulted": false
               }
@@ -1657,6 +1744,11 @@
                 "vaulted": true
               },
               {
+                "relic": "K9",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "N1",
                 "rarity": "Common",
                 "vaulted": true
@@ -1751,7 +1843,7 @@
               {
                 "relic": "Y1",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -1803,6 +1895,11 @@
           "imageName": "GenericWeaponPrimeBlade.png",
           "drops": {
             "Lith": [
+              {
+                "relic": "A13",
+                "rarity": "Common",
+                "vaulted": false
+              },
               {
                 "relic": "C1",
                 "rarity": "Common",
@@ -2100,7 +2197,7 @@
               {
                 "relic": "T14",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Z1",
@@ -3274,10 +3371,16 @@
               {
                 "relic": "T11",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ]
           }
         },
         {
@@ -3294,6 +3397,11 @@
                 "relic": "D7",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "L8",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "S18",
@@ -3314,6 +3422,11 @@
             "Meso": [
               {
                 "relic": "K8",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "K9",
                 "rarity": "Rare",
                 "vaulted": false
               }
@@ -3810,6 +3923,11 @@
                 "relic": "C3",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "E8",
+                "rarity": "Common",
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -3867,6 +3985,11 @@
                 "relic": "N5",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "N14",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ]
           }
@@ -3906,7 +4029,13 @@
                 "vaulted": true
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "B10",
+                "rarity": "Uncommon",
+                "vaulted": true
+              }
+            ]
           }
         }
       ]
@@ -4235,6 +4364,11 @@
                 "relic": "O3",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "O4",
+                "rarity": "Rare",
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -4274,7 +4408,13 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "P11",
+                "rarity": "Common",
+                "vaulted": true
+              }
+            ],
             "Axi": [
               {
                 "relic": "B8",
@@ -4318,6 +4458,11 @@
               },
               {
                 "relic": "L3",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "V16",
                 "rarity": "Uncommon",
                 "vaulted": true
               },
@@ -4378,6 +4523,11 @@
                 "relic": "S11",
                 "rarity": "Uncommon",
                 "vaulted": true
+              },
+              {
+                "relic": "S19",
+                "rarity": "Uncommon",
+                "vaulted": false
               },
               {
                 "relic": "S8",
@@ -4448,7 +4598,7 @@
               {
                 "relic": "S20",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "V3",
@@ -4561,6 +4711,11 @@
                 "relic": "D4",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "L8",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "M10",
@@ -4913,7 +5068,7 @@
               {
                 "relic": "T14",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [
@@ -4937,7 +5092,7 @@
               {
                 "relic": "V12",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "X1",
@@ -4966,7 +5121,7 @@
               {
                 "relic": "Q3",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [],
@@ -5001,7 +5156,7 @@
               {
                 "relic": "C8",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -5018,7 +5173,7 @@
               {
                 "relic": "T13",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Y3",
@@ -5318,14 +5473,20 @@
           "name": "Blade",
           "imageName": "GenericWeaponPrimeBlade.png",
           "drops": {
-            "Lith": [],
+            "Lith": [
+              {
+                "relic": "S19",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
             "Meso": [],
             "Neo": [],
             "Axi": [
               {
                 "relic": "S20",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -5347,9 +5508,20 @@
                 "relic": "S20",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "V13",
+                "rarity": "Common",
+                "vaulted": false
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "C13",
+                "rarity": "Common",
+                "vaulted": true
+              }
+            ]
           }
         }
       ]
@@ -6062,6 +6234,11 @@
               {
                 "relic": "C8",
                 "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "K10",
+                "rarity": "Uncommon",
                 "vaulted": false
               }
             ],
@@ -6109,7 +6286,7 @@
               {
                 "relic": "V15",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -6117,6 +6294,11 @@
                 "relic": "N24",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "Y2",
+                "rarity": "Common",
+                "vaulted": false
               }
             ],
             "Axi": [
@@ -6780,9 +6962,14 @@
             "Meso": [],
             "Neo": [
               {
-                "relic": "C8",
+                "relic": "C10",
                 "rarity": "Uncommon",
                 "vaulted": false
+              },
+              {
+                "relic": "C8",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -6812,10 +6999,16 @@
               {
                 "relic": "Q3",
                 "rarity": "Common",
+                "vaulted": true
+              }
+            ],
+            "Meso": [
+              {
+                "relic": "D9",
+                "rarity": "Common",
                 "vaulted": false
               }
             ],
-            "Meso": [],
             "Neo": [],
             "Axi": []
           }
@@ -6834,6 +7027,11 @@
             "Lith": [
               {
                 "relic": "A12",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "A13",
                 "rarity": "Rare",
                 "vaulted": false
               }
@@ -6861,6 +7059,11 @@
           "drops": {
             "Lith": [
               {
+                "relic": "L8",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
+              {
                 "relic": "N18",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -6870,7 +7073,7 @@
               {
                 "relic": "K8",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -6887,7 +7090,7 @@
               {
                 "relic": "C9",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "P9",
@@ -6896,6 +7099,11 @@
               }
             ],
             "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Common",
+                "vaulted": false
+              },
               {
                 "relic": "V14",
                 "rarity": "Common",
@@ -7151,6 +7359,11 @@
                 "relic": "B5",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "I3",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -7200,6 +7413,11 @@
                 "relic": "N15",
                 "rarity": "Uncommon",
                 "vaulted": true
+              },
+              {
+                "relic": "O4",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -7242,6 +7460,11 @@
                 "relic": "P2",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "V16",
+                "rarity": "Common",
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -7275,6 +7498,11 @@
           "imageName": "GenericGunPrimeStock.png",
           "drops": {
             "Lith": [
+              {
+                "relic": "B12",
+                "rarity": "Rare",
+                "vaulted": true
+              },
               {
                 "relic": "B9",
                 "rarity": "Rare",
@@ -7693,6 +7921,11 @@
             ],
             "Neo": [
               {
+                "relic": "O4",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "B7",
                 "rarity": "Common",
                 "vaulted": true
@@ -7818,6 +8051,11 @@
                 "vaulted": true
               },
               {
+                "relic": "B12",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "C11",
                 "rarity": "Common",
                 "vaulted": true
@@ -7856,6 +8094,11 @@
                 "relic": "P4",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "S19",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "S8",
@@ -7969,7 +8212,7 @@
               {
                 "relic": "T11",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "T5",
@@ -8091,7 +8334,7 @@
               {
                 "relic": "X1",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -8107,6 +8350,11 @@
               },
               {
                 "relic": "N14",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "P11",
                 "rarity": "Uncommon",
                 "vaulted": true
               },
@@ -8132,6 +8380,11 @@
               }
             ],
             "Axi": [
+              {
+                "relic": "C13",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
               {
                 "relic": "H6",
                 "rarity": "Uncommon",
@@ -8203,7 +8456,7 @@
               {
                 "relic": "K12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "N10",
@@ -8313,6 +8566,11 @@
                 "relic": "B2",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "C10",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "C2",
@@ -8499,14 +8757,24 @@
                 "vaulted": true
               },
               {
+                "relic": "D9",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "I2",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "I3",
                 "rarity": "Common",
                 "vaulted": true
               },
               {
                 "relic": "K8",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "P4",
@@ -8542,6 +8810,11 @@
               },
               {
                 "relic": "N23",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "N25",
                 "rarity": "Common",
                 "vaulted": true
               },
@@ -8797,6 +9070,16 @@
             ],
             "Axi": [
               {
+                "relic": "A23",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "B10",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "G3",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -8842,12 +9125,17 @@
               {
                 "relic": "A12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "A4",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "C15",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "C4",
@@ -8989,6 +9277,11 @@
                 "vaulted": true
               },
               {
+                "relic": "H5",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "I2",
                 "rarity": "Common",
                 "vaulted": true
@@ -9005,6 +9298,11 @@
               },
               {
                 "relic": "N17",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "P11",
                 "rarity": "Common",
                 "vaulted": true
               },
@@ -9186,6 +9484,11 @@
                 "vaulted": true
               },
               {
+                "relic": "V16",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "W2",
                 "rarity": "Common",
                 "vaulted": true
@@ -9248,6 +9551,11 @@
                 "vaulted": true
               },
               {
+                "relic": "Y2",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "Z4",
                 "rarity": "Common",
                 "vaulted": true
@@ -9259,6 +9567,16 @@
               }
             ],
             "Axi": [
+              {
+                "relic": "A23",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "B10",
+                "rarity": "Common",
+                "vaulted": true
+              },
               {
                 "relic": "G5",
                 "rarity": "Common",
@@ -9272,7 +9590,7 @@
               {
                 "relic": "T13",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -9293,6 +9611,11 @@
                 "relic": "C14",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "C15",
+                "rarity": "Rare",
+                "vaulted": false
               }
             ],
             "Meso": [],
@@ -9305,7 +9628,7 @@
               {
                 "relic": "C9",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -9324,6 +9647,11 @@
               }
             ],
             "Neo": [
+              {
+                "relic": "C11",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
               {
                 "relic": "T9",
                 "rarity": "Uncommon",
@@ -9352,15 +9680,21 @@
               {
                 "relic": "K12",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Q3",
                 "rarity": "Uncommon",
+                "vaulted": true
+              }
+            ],
+            "Meso": [
+              {
+                "relic": "D9",
+                "rarity": "Uncommon",
                 "vaulted": false
               }
             ],
-            "Meso": [],
             "Neo": [
               {
                 "relic": "P10",
@@ -9404,7 +9738,7 @@
               {
                 "relic": "C8",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -9417,6 +9751,11 @@
                 "relic": "S18",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "S21",
+                "rarity": "Common",
+                "vaulted": false
               }
             ]
           }
@@ -9891,15 +10230,20 @@
               {
                 "relic": "T14",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [],
             "Neo": [
               {
-                "relic": "C8",
+                "relic": "C11",
                 "rarity": "Common",
                 "vaulted": false
+              },
+              {
+                "relic": "C8",
+                "rarity": "Common",
+                "vaulted": true
               },
               {
                 "relic": "N24",
@@ -9907,7 +10251,13 @@
                 "vaulted": true
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ]
           }
         },
         {
@@ -9946,7 +10296,7 @@
               {
                 "relic": "A12",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "A8",
@@ -9961,7 +10311,13 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "K10",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
             "Axi": [
               {
                 "relic": "C10",
@@ -9981,6 +10337,11 @@
           "imageName": "GenericGunPrimeStock.png",
           "drops": {
             "Lith": [
+              {
+                "relic": "C15",
+                "rarity": "Common",
+                "vaulted": false
+              },
               {
                 "relic": "N19",
                 "rarity": "Common",
@@ -10020,6 +10381,11 @@
           "drops": {
             "Lith": [],
             "Meso": [
+              {
+                "relic": "C11",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
               {
                 "relic": "E7",
                 "rarity": "Uncommon",
@@ -10769,6 +11135,11 @@
             ],
             "Meso": [
               {
+                "relic": "C11",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "D6",
                 "rarity": "Common",
                 "vaulted": true
@@ -10843,7 +11214,7 @@
               {
                 "relic": "V12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Z1",
@@ -10983,9 +11354,14 @@
                 "vaulted": true
               },
               {
-                "relic": "X1",
+                "relic": "V17",
                 "rarity": "Uncommon",
                 "vaulted": false
+              },
+              {
+                "relic": "X1",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -11048,6 +11424,11 @@
                 "relic": "A11",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "A13",
+                "rarity": "Common",
+                "vaulted": false
               },
               {
                 "relic": "B2",
@@ -11129,7 +11510,7 @@
               {
                 "relic": "L5",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "O1",
@@ -11261,7 +11642,7 @@
               {
                 "relic": "Q3",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "S1",
@@ -11388,6 +11769,11 @@
                 "vaulted": true
               },
               {
+                "relic": "V13",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "V3",
                 "rarity": "Common",
                 "vaulted": true
@@ -11427,7 +11813,7 @@
               {
                 "relic": "S20",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "T6",
@@ -11545,6 +11931,11 @@
                 "vaulted": true
               },
               {
+                "relic": "D9",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "I1",
                 "rarity": "Common",
                 "vaulted": true
@@ -11589,7 +11980,7 @@
               {
                 "relic": "C9",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "D5",
@@ -11667,7 +12058,13 @@
           "name": "Blueprint",
           "imageName": "blueprint.png",
           "drops": {
-            "Lith": [],
+            "Lith": [
+              {
+                "relic": "L8",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
             "Meso": [
               {
                 "relic": "A12",
@@ -11719,10 +12116,16 @@
               {
                 "relic": "T14",
                 "rarity": "Uncommon",
+                "vaulted": true
+              }
+            ],
+            "Meso": [
+              {
+                "relic": "K9",
+                "rarity": "Uncommon",
                 "vaulted": false
               }
             ],
-            "Meso": [],
             "Neo": [],
             "Axi": []
           }
@@ -11742,7 +12145,7 @@
               {
                 "relic": "T11",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -12466,6 +12869,77 @@
                 "vaulted": true
               }
             ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Steflos Prime",
+      "category": "Primary",
+      "imageName": "SteflosPrime.png",
+      "parts": [
+        {
+          "name": "Blueprint",
+          "imageName": "blueprint.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [
+              {
+                "relic": "Y2",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Barrel",
+          "imageName": "GenericGunPrimeBarrel.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [],
+            "Axi": [
+              {
+                "relic": "S21",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "Receiver",
+          "imageName": "GenericGunPrimeReceiver.png",
+          "drops": {
+            "Lith": [
+              {
+                "relic": "A13",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Meso": [],
+            "Neo": [],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Stock",
+          "imageName": "GenericGunPrimeStock.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [
+              {
+                "relic": "D9",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
+            "Neo": [],
+            "Axi": []
           }
         }
       ]
@@ -13582,7 +14056,7 @@
               {
                 "relic": "K12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Q2",
@@ -13599,7 +14073,7 @@
               {
                 "relic": "V15",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Y1",
@@ -13616,7 +14090,7 @@
               {
                 "relic": "Y1",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -13636,7 +14110,7 @@
               {
                 "relic": "T14",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [
@@ -13656,7 +14130,7 @@
               {
                 "relic": "T13",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -13676,7 +14150,7 @@
               {
                 "relic": "T11",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "T9",
@@ -13718,7 +14192,7 @@
               {
                 "relic": "L5",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "V14",
@@ -13757,10 +14231,16 @@
               {
                 "relic": "V15",
                 "rarity": "Rare",
+                "vaulted": true
+              }
+            ],
+            "Neo": [
+              {
+                "relic": "V13",
+                "rarity": "Rare",
                 "vaulted": false
               }
             ],
-            "Neo": [],
             "Axi": []
           }
         },
@@ -13812,10 +14292,15 @@
               {
                 "relic": "L5",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [
+              {
+                "relic": "C11",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
               {
                 "relic": "C7",
                 "rarity": "Uncommon",
@@ -13856,13 +14341,18 @@
               {
                 "relic": "X1",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [],
             "Axi": [
               {
                 "relic": "A21",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
+                "relic": "C12",
                 "rarity": "Common",
                 "vaulted": false
               }
@@ -14817,7 +15307,7 @@
               {
                 "relic": "A12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "A8",
@@ -14910,6 +15400,11 @@
                 "relic": "S3",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "V17",
+                "rarity": "Common",
+                "vaulted": false
               }
             ],
             "Neo": [
@@ -14946,7 +15441,7 @@
               {
                 "relic": "V12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "W2",
@@ -14994,6 +15489,11 @@
                 "vaulted": true
               },
               {
+                "relic": "L8",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
+              {
                 "relic": "N1",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -15030,7 +15530,7 @@
               {
                 "relic": "C9",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "L2",
@@ -15403,6 +15903,11 @@
             ],
             "Meso": [
               {
+                "relic": "I3",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "R2",
                 "rarity": "Common",
                 "vaulted": true
@@ -15464,6 +15969,11 @@
             ],
             "Neo": [
               {
+                "relic": "P11",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "S16",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -15506,6 +16016,11 @@
                 "vaulted": true
               },
               {
+                "relic": "A23",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
                 "relic": "A8",
                 "rarity": "Rare",
                 "vaulted": true
@@ -15518,6 +16033,11 @@
           "imageName": "GenericGunPrimeReceiver.png",
           "drops": {
             "Lith": [
+              {
+                "relic": "B12",
+                "rarity": "Common",
+                "vaulted": true
+              },
               {
                 "relic": "K6",
                 "rarity": "Common",
@@ -15792,9 +16312,14 @@
             "Lith": [],
             "Meso": [
               {
-                "relic": "L5",
+                "relic": "K9",
                 "rarity": "Common",
                 "vaulted": false
+              },
+              {
+                "relic": "L5",
+                "rarity": "Common",
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -15874,7 +16399,13 @@
               }
             ],
             "Neo": [],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "B10",
+                "rarity": "Rare",
+                "vaulted": true
+              }
+            ]
           }
         },
         {
@@ -15884,6 +16415,11 @@
             "Lith": [
               {
                 "relic": "O1",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "S20",
                 "rarity": "Common",
                 "vaulted": true
               }
@@ -15961,6 +16497,11 @@
                 "vaulted": true
               },
               {
+                "relic": "N25",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "S7",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -15989,6 +16530,11 @@
             "Neo": [
               {
                 "relic": "A6",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "H5",
                 "rarity": "Uncommon",
                 "vaulted": true
               }
@@ -16026,6 +16572,11 @@
               }
             ],
             "Neo": [
+              {
+                "relic": "H5",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
               {
                 "relic": "N10",
                 "rarity": "Uncommon",
@@ -16101,7 +16652,7 @@
               {
                 "relic": "Q3",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "S1",
@@ -16183,6 +16734,11 @@
                 "vaulted": true
               },
               {
+                "relic": "K10",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "M1",
                 "rarity": "Common",
                 "vaulted": true
@@ -16206,6 +16762,11 @@
               },
               {
                 "relic": "G15",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "N14",
                 "rarity": "Common",
                 "vaulted": true
               },
@@ -16344,6 +16905,11 @@
                 "vaulted": true
               },
               {
+                "relic": "N14",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "N3",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -16361,6 +16927,11 @@
               {
                 "relic": "W3",
                 "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "C13",
+                "rarity": "Common",
                 "vaulted": true
               }
             ]
@@ -16408,6 +16979,16 @@
               },
               {
                 "relic": "Q1",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "S19",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
+                "relic": "S20",
                 "rarity": "Common",
                 "vaulted": true
               }
@@ -16600,7 +17181,13 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "H5",
+                "rarity": "Common",
+                "vaulted": true
+              }
+            ],
             "Axi": [
               {
                 "relic": "A19",
@@ -16642,6 +17229,11 @@
             "Lith": [
               {
                 "relic": "Q2",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "S20",
                 "rarity": "Uncommon",
                 "vaulted": true
               },
@@ -16697,6 +17289,11 @@
               },
               {
                 "relic": "E7",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "E8",
                 "rarity": "Rare",
                 "vaulted": true
               }
@@ -17258,7 +17855,13 @@
                 "vaulted": false
               }
             ],
-            "Meso": [],
+            "Meso": [
+              {
+                "relic": "C11",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
             "Neo": [
               {
                 "relic": "C7",
@@ -17293,7 +17896,7 @@
               {
                 "relic": "K12",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [
@@ -17303,7 +17906,13 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "K10",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
             "Axi": []
           }
         },
@@ -17515,6 +18124,11 @@
                 "vaulted": true
               },
               {
+                "relic": "Y2",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "Z2",
                 "rarity": "Common",
                 "vaulted": true
@@ -17659,7 +18273,7 @@
               {
                 "relic": "K8",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "L2",
@@ -17913,6 +18527,11 @@
                 "vaulted": true
               },
               {
+                "relic": "C11",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
                 "relic": "D8",
                 "rarity": "Common",
                 "vaulted": true
@@ -17945,7 +18564,7 @@
               {
                 "relic": "Y1",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -18961,6 +19580,11 @@
           "drops": {
             "Lith": [
               {
+                "relic": "B12",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "D7",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -19021,6 +19645,11 @@
                 "vaulted": true
               },
               {
+                "relic": "V16",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
                 "relic": "V9",
                 "rarity": "Rare",
                 "vaulted": true
@@ -19074,6 +19703,11 @@
             "Axi": [
               {
                 "relic": "A20",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "A23",
                 "rarity": "Common",
                 "vaulted": true
               },
@@ -20008,6 +20642,11 @@
                 "relic": "N24",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "N25",
+                "rarity": "Rare",
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -20054,6 +20693,11 @@
             ],
             "Axi": [
               {
+                "relic": "B10",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "V13",
                 "rarity": "Common",
                 "vaulted": true
@@ -20089,6 +20733,11 @@
                 "relic": "N13",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "N14",
+                "rarity": "Rare",
+                "vaulted": true
               }
             ]
           }
@@ -20112,6 +20761,11 @@
             "Meso": [
               {
                 "relic": "A10",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "E8",
                 "rarity": "Uncommon",
                 "vaulted": true
               },
@@ -21170,6 +21824,11 @@
             ],
             "Meso": [
               {
+                "relic": "K9",
+                "rarity": "Uncommon",
+                "vaulted": false
+              },
+              {
                 "relic": "V11",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -21182,7 +21841,7 @@
               {
                 "relic": "V15",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -21197,14 +21856,14 @@
               {
                 "relic": "K12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [
               {
                 "relic": "V15",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "Y1",
@@ -21212,10 +21871,21 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "C10",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
             "Axi": [
               {
                 "relic": "P10",
+                "rarity": "Common",
+                "vaulted": false
+              },
+              {
+                "relic": "S21",
                 "rarity": "Common",
                 "vaulted": false
               }
@@ -21241,7 +21911,13 @@
                 "vaulted": false
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "C13",
+                "rarity": "Rare",
+                "vaulted": true
+              }
+            ]
           }
         },
         {
@@ -21252,9 +21928,14 @@
             "Meso": [],
             "Neo": [
               {
-                "relic": "C8",
+                "relic": "C11",
                 "rarity": "Rare",
                 "vaulted": false
+              },
+              {
+                "relic": "C8",
+                "rarity": "Rare",
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -21441,6 +22122,77 @@
                 "vaulted": true
               }
             ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Citrine Prime",
+      "category": "Warframe",
+      "imageName": "CitrinePrime.png",
+      "parts": [
+        {
+          "name": "Blueprint",
+          "imageName": "blueprint.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [
+              {
+                "relic": "C11",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
+            "Neo": [],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Chassis Blueprint",
+          "imageName": "GenericWarframePrimeChassis.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [
+              {
+                "relic": "C11",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Neuroptics Blueprint",
+          "imageName": "GenericWarframePrimeHelmet.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [],
+            "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "Systems Blueprint",
+          "imageName": "GenericWarframePrimeSystem.png",
+          "drops": {
+            "Lith": [
+              {
+                "relic": "S19",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
+            "Meso": [],
+            "Neo": [],
+            "Axi": []
           }
         }
       ]
@@ -22640,7 +23392,7 @@
               {
                 "relic": "Q3",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [],
@@ -22651,21 +23403,33 @@
                 "vaulted": true
               }
             ],
-            "Axi": []
+            "Axi": [
+              {
+                "relic": "S21",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ]
           }
         },
         {
           "name": "Chassis Blueprint",
           "imageName": "GenericWarframePrimeChassis.png",
           "drops": {
-            "Lith": [],
+            "Lith": [
+              {
+                "relic": "A13",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
             "Meso": [],
             "Neo": [],
             "Axi": [
               {
                 "relic": "T13",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -22708,7 +23472,13 @@
                 "vaulted": false
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "K10",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
             "Axi": []
           }
         }
@@ -23141,6 +23911,11 @@
                 "vaulted": true
               },
               {
+                "relic": "E8",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "N5",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -23217,6 +23992,11 @@
                 "relic": "C4",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "N14",
+                "rarity": "Common",
+                "vaulted": true
               }
             ]
           }
@@ -23230,6 +24010,11 @@
             "Neo": [
               {
                 "relic": "G1",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "N25",
                 "rarity": "Uncommon",
                 "vaulted": true
               }
@@ -23272,6 +24057,11 @@
               },
               {
                 "relic": "H3",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "H5",
                 "rarity": "Rare",
                 "vaulted": true
               }
@@ -23497,6 +24287,11 @@
           "drops": {
             "Lith": [
               {
+                "relic": "B12",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "B8",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -23550,7 +24345,13 @@
                 "vaulted": true
               }
             ],
-            "Meso": [],
+            "Meso": [
+              {
+                "relic": "I3",
+                "rarity": "Rare",
+                "vaulted": true
+              }
+            ],
             "Neo": [
               {
                 "relic": "I1",
@@ -23616,6 +24417,11 @@
                 "vaulted": true
               },
               {
+                "relic": "O4",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
                 "relic": "T4",
                 "rarity": "Common",
                 "vaulted": true
@@ -23643,6 +24449,11 @@
             "Meso": [
               {
                 "relic": "P2",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
+                "relic": "V16",
                 "rarity": "Uncommon",
                 "vaulted": true
               }
@@ -23859,7 +24670,13 @@
                 "vaulted": true
               }
             ],
-            "Meso": [],
+            "Meso": [
+              {
+                "relic": "V17",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
             "Neo": [
               {
                 "relic": "A16",
@@ -23894,10 +24711,16 @@
               {
                 "relic": "T14",
                 "rarity": "Common",
+                "vaulted": true
+              }
+            ],
+            "Meso": [
+              {
+                "relic": "C11",
+                "rarity": "Common",
                 "vaulted": false
               }
             ],
-            "Meso": [],
             "Neo": [
               {
                 "relic": "X1",
@@ -23936,6 +24759,11 @@
                 "relic": "N24",
                 "rarity": "Uncommon",
                 "vaulted": true
+              },
+              {
+                "relic": "V13",
+                "rarity": "Uncommon",
+                "vaulted": false
               }
             ],
             "Axi": [
@@ -23966,6 +24794,11 @@
                 "relic": "L7",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "L8",
+                "rarity": "Rare",
+                "vaulted": false
               }
             ],
             "Meso": [
@@ -23982,7 +24815,7 @@
               {
                 "relic": "L5",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [],
@@ -26040,6 +26873,11 @@
                 "relic": "C6",
                 "rarity": "Common",
                 "vaulted": true
+              },
+              {
+                "relic": "O4",
+                "rarity": "Common",
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -26069,6 +26907,11 @@
               }
             ],
             "Neo": [
+              {
+                "relic": "P11",
+                "rarity": "Rare",
+                "vaulted": true
+              },
               {
                 "relic": "P7",
                 "rarity": "Rare",
@@ -26126,6 +26969,11 @@
             ],
             "Axi": [
               {
+                "relic": "A23",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "S16",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -26158,6 +27006,11 @@
               {
                 "relic": "P16",
                 "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "I3",
+                "rarity": "Uncommon",
                 "vaulted": true
               }
             ],
@@ -26715,6 +27568,11 @@
                 "vaulted": true
               },
               {
+                "relic": "S20",
+                "rarity": "Uncommon",
+                "vaulted": true
+              },
+              {
                 "relic": "Z4",
                 "rarity": "Uncommon",
                 "vaulted": true
@@ -26757,6 +27615,11 @@
                 "relic": "S16",
                 "rarity": "Rare",
                 "vaulted": true
+              },
+              {
+                "relic": "S20",
+                "rarity": "Rare",
+                "vaulted": true
               }
             ],
             "Meso": [],
@@ -26794,6 +27657,11 @@
               },
               {
                 "relic": "A9",
+                "rarity": "Common",
+                "vaulted": true
+              },
+              {
+                "relic": "E8",
                 "rarity": "Common",
                 "vaulted": true
               },
@@ -26877,7 +27745,13 @@
                 "vaulted": true
               }
             ],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "N25",
+                "rarity": "Common",
+                "vaulted": true
+              }
+            ],
             "Axi": []
           }
         }
@@ -26894,7 +27768,13 @@
           "drops": {
             "Lith": [],
             "Meso": [],
-            "Neo": [],
+            "Neo": [
+              {
+                "relic": "V13",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
             "Axi": [
               {
                 "relic": "A21",
@@ -26944,9 +27824,14 @@
             "Meso": [],
             "Neo": [
               {
-                "relic": "Y1",
+                "relic": "C10",
                 "rarity": "Uncommon",
                 "vaulted": false
+              },
+              {
+                "relic": "Y1",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -27876,6 +28761,11 @@
                 "relic": "A21",
                 "rarity": "Uncommon",
                 "vaulted": false
+              },
+              {
+                "relic": "C13",
+                "rarity": "Uncommon",
+                "vaulted": true
               }
             ]
           }
@@ -27912,7 +28802,13 @@
                 "vaulted": false
               }
             ],
-            "Meso": [],
+            "Meso": [
+              {
+                "relic": "V17",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
             "Neo": [
               {
                 "relic": "V11",
@@ -27922,7 +28818,7 @@
               {
                 "relic": "V12",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -28341,7 +29237,7 @@
               {
                 "relic": "X1",
                 "rarity": "Rare",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -28370,7 +29266,7 @@
               {
                 "relic": "C9",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "G8",
@@ -28390,7 +29286,7 @@
               {
                 "relic": "V12",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": [
@@ -28432,7 +29328,7 @@
               {
                 "relic": "K8",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               },
               {
                 "relic": "T8",
@@ -28450,7 +29346,7 @@
               {
                 "relic": "T13",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -28468,7 +29364,7 @@
               {
                 "relic": "A12",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Meso": [],
@@ -28493,7 +29389,7 @@
               {
                 "relic": "S20",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ]
           }
@@ -28509,7 +29405,13 @@
           "name": "Blueprint",
           "imageName": "blueprint.png",
           "drops": {
-            "Lith": [],
+            "Lith": [
+              {
+                "relic": "C15",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ],
             "Meso": [
               {
                 "relic": "D8",
@@ -28531,7 +29433,7 @@
               {
                 "relic": "T11",
                 "rarity": "Uncommon",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -28555,9 +29457,14 @@
             ],
             "Meso": [
               {
-                "relic": "X1",
+                "relic": "K9",
                 "rarity": "Common",
                 "vaulted": false
+              },
+              {
+                "relic": "X1",
+                "rarity": "Common",
+                "vaulted": true
               }
             ],
             "Neo": [
@@ -28574,7 +29481,7 @@
               {
                 "relic": "V12",
                 "rarity": "Common",
-                "vaulted": false
+                "vaulted": true
               }
             ],
             "Axi": []
@@ -28627,6 +29534,11 @@
             "Neo": [
               {
                 "relic": "Y1",
+                "rarity": "Rare",
+                "vaulted": true
+              },
+              {
+                "relic": "Y2",
                 "rarity": "Rare",
                 "vaulted": false
               }
