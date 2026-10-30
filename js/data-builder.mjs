@@ -249,5 +249,11 @@ export function buildRelicsData(rawRelics, categoryMap) {
     return a.name.localeCompare(b.name);
   });
 
+  // Upstream has shipped Relics.json with every rewards[] empty. Fail instead of
+  // letting an empty list overwrite the bundle or the browser cache.
+  if (output.items.length === 0) {
+    throw new Error('Upstream Relics.json has no Prime part rewards');
+  }
+
   return output;
 }
