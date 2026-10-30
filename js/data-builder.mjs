@@ -5,6 +5,7 @@
 // Source files (from WFCD/warframe-items, MIT licensed, served via jsDelivr):
 //   data/json/Relics.json    -> raw relic + reward + vaulted flags
 //   data/json/<Category>.json -> classifies parent items as Warframe / Primary / etc.
+//   data/json/Components.json -> part names + imageNames for component references
 //
 // Runtime refreshes intentionally use the latest upstream data so users can
 // pick up new relic information without waiting for this repository to update.
@@ -34,6 +35,10 @@ export const CATEGORY_FILES = [
   ['ArchGun', 'Arch-Gun.json'],
   ['ArchMelee', 'Arch-Melee.json'],
 ];
+
+// Newer upstream data normalizes each item's `components[]` to
+// `{ uniqueName, itemCount }` references; names and imageNames live here.
+export const COMPONENTS_FILE = 'Components.json';
 
 const PART_SUFFIX_RE =
   /\s+(Blueprint|Chassis|Neuroptics|Systems|Barrel|Receiver|Stock|Blade|Handle|Link|String|Upper Limb|Lower Limb|Disc|Grip|Head|Pouch|Ornament|Boot|Star|Hilt|Harness|Wings|Carapace|Cerebrum)$/i;
@@ -80,9 +85,19 @@ function parsePrimeName(itemName) {
 //
 // The parent entry contains `components[]`, each with its own imageName
 // ("prime-chassis.png", etc). We index those by component name so buildRelicsData
-// can decorate each part entry with a part icon.
+// can decorate each part entry with a part icon. Reference-only components are
+// resolved through Components.json; older inline entries are used as-is.
 export async function buildCategoryMap(loadJson) {
   const map = new Map();
+  const componentsByUniqueName = new Map();
+  try {
+    for (const c of (await loadJson(COMPONENTS_FILE)) ?? []) {
+      if (typeof c?.uniqueName === 'string') componentsByUniqueName.set(c.uniqueName, c);
+    }
+  } catch {}
+  const resolveComponent = (c) =>
+    c?.name && c?.imageName ? c : componentsByUniqueName.get(c?.uniqueName) ?? c;
+
   for (const [category, file] of CATEGORY_FILES) {
     let items;
     try {
@@ -99,6 +114,7 @@ export async function buildCategoryMap(loadJson) {
       const componentImages = isParent && Array.isArray(it.components)
         ? Object.fromEntries(
             it.components
+              .map(resolveComponent)
               .filter((c) => c?.name && c?.imageName)
               .map((c) => [c.name, safeImageName(c.imageName)])
               .filter(([, imageName]) => imageName)
