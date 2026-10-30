@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T11:49:53.828Z",
+  "lastUpdated": "2026-10-30T11:54:55.679Z",
   "source": "https://cdn.jsdelivr.net/gh/WFCD/warframe-items@master/data/json",
   "upstream": {
     "repo": "https://github.com/WFCD/warframe-items",
@@ -382,77 +382,6 @@
                 "vaulted": true
               }
             ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "Corufell Prime",
-      "category": "ArchMelee",
-      "imageName": "CorufellPrime.png",
-      "parts": [
-        {
-          "name": "Blueprint",
-          "imageName": "blueprint.png",
-          "drops": {
-            "Lith": [],
-            "Meso": [
-              {
-                "relic": "V17",
-                "rarity": "Common",
-                "vaulted": false
-              }
-            ],
-            "Neo": [],
-            "Axi": []
-          }
-        },
-        {
-          "name": "Handle",
-          "imageName": "GenericWeaponPrimeHilt.png",
-          "drops": {
-            "Lith": [],
-            "Meso": [],
-            "Neo": [],
-            "Axi": [
-              {
-                "relic": "C12",
-                "rarity": "Uncommon",
-                "vaulted": false
-              }
-            ]
-          }
-        },
-        {
-          "name": "Receiver",
-          "imageName": "GenericGunPrimeReceiver.png",
-          "drops": {
-            "Lith": [],
-            "Meso": [],
-            "Neo": [
-              {
-                "relic": "C10",
-                "rarity": "Rare",
-                "vaulted": false
-              }
-            ],
-            "Axi": []
-          }
-        },
-        {
-          "name": "Stock",
-          "imageName": "GenericWeaponPrimeBlade.png",
-          "drops": {
-            "Lith": [
-              {
-                "relic": "C15",
-                "rarity": "Common",
-                "vaulted": false
-              }
-            ],
-            "Meso": [],
-            "Neo": [],
-            "Axi": []
           }
         }
       ]
@@ -974,6 +903,77 @@
                 "vaulted": true
               }
             ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Corufell Prime",
+      "category": "Melee",
+      "imageName": "CorufellPrime.png",
+      "parts": [
+        {
+          "name": "Blueprint",
+          "imageName": "blueprint.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [
+              {
+                "relic": "V17",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Neo": [],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Handle",
+          "imageName": "GenericWeaponPrimeHilt.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [],
+            "Axi": [
+              {
+                "relic": "C12",
+                "rarity": "Uncommon",
+                "vaulted": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "Receiver",
+          "imageName": "GenericGunPrimeReceiver.png",
+          "drops": {
+            "Lith": [],
+            "Meso": [],
+            "Neo": [
+              {
+                "relic": "C10",
+                "rarity": "Rare",
+                "vaulted": false
+              }
+            ],
+            "Axi": []
+          }
+        },
+        {
+          "name": "Stock",
+          "imageName": "GenericWeaponPrimeBlade.png",
+          "drops": {
+            "Lith": [
+              {
+                "relic": "C15",
+                "rarity": "Common",
+                "vaulted": false
+              }
+            ],
+            "Meso": [],
+            "Neo": [],
+            "Axi": []
           }
         }
       ]
